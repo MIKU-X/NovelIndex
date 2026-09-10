@@ -2,6 +2,6 @@
 # 当前验证通过的安装版本：playwright 1.60.0 / patchright 1.62.3 / openai 1.109.1 / python-dotenv 1.2.2 / ruff 0.15.20。
 playwright>=1.40.0,<2
 patchright>=1.62.1,<2  # 起点反检测引擎（playwright 补丁分支）：真实 Chrome headless=True 过腾讯验证码（20260908 实测）
-openai>=1.0.0,<2
+openai>=3.8.0,<4
 python-dotenv>=1.0.0,<2
 ruff>=0.15.0,<0.16  # 开发依赖：lint 质量门禁（ruff.toml 配置）；ruff 0.x 语义，锁在 0.15 段
