@@ -1,0 +1,59 @@
+# 小说指数 · NovelIndex
+
+多平台小说榜单采集、历史趋势及写作参考看板，支持番茄、起点和晋江。页面为静态 HTML/CSS/JavaScript；Python 负责采集、构建和发布打包。
+
+此源码包包含当前实现、MIT 正文、第三方说明、测试和合成示例。未包含旧 Git 历史、真实榜单、密钥、日志、数据库或第三方参考整包。已识别的历史移植部分已完成替代，范围与证据见[来源核对](docs/来源核对.md)。本项目许可证不授予网站作品内容、封面或商标的权利。
+
+## 先看合成示例
+
+需要 Python 3.10+；无需网络、爬虫依赖或 AI 密钥：
+
+```text
+python scripts/build_release.py --demo
+python scripts/serve_preview.py 8000 --root dist
+```
+
+访问 http://127.0.0.1:8000/ 。示例包括 9 个榜单和 3 天历史，书籍、作者、简介、指标均为合成数据。JSON/CSV 导出可离线使用；Excel 使用官方 SheetJS CDN。
+
+## 采集自己的数据
+
+```text
+python -m venv .venv
+```
+
+激活虚拟环境后安装依赖和浏览器：
+
+```text
+python -m pip install -r requirements.txt
+python -m playwright install chromium
+python -m patchright install chromium
+python run_all.py --platform qidian
+```
+
+Windows 可直接使用 `.venv\Scripts\python.exe`；Linux/macOS 为 `.venv/bin/python`。默认优先使用已安装 Chrome，不存在时回退各引擎的 Chromium。遵守平台规则，遇到限流或验证码先停止并等待冷却，不保证任何时间都能采集成功。
+
+如需 AI，总览 `.env.example` 后复制为本地 `.env` 并配置。未配置时使用规则分析；不生成 AI 创作建议。仅刷新已有数据且不请求 AI 时可运行 `python run_all.py --no-scrape --no-ai`。详情见[数据质量说明](docs/采集与数据质量.md)。
+
+## 运行和发布
+
+- [Windows 计划任务、日志和静态发布](docs/发布与定时任务.md)
+- [来源与替代范围](docs/来源核对.md)
+- [第三方许可证声明](THIRD_PARTY_NOTICES.md)
+- [贡献与离线检查](CONTRIBUTING.md)
+- [公开前安全检查与 GitHub 设置](docs/GitHub公开前检查.md)
+- [安全问题报告](SECURITY.md)
+- [已知限制与发布边界](docs/已知限制.md)
+
+`python scripts/build_source_release.py` 按 `config/source_release.json` 的显式文件清单重新打包源码，生成可检查目录、ZIP、文件哈希和包哈希。
+
+首次开源可以在源码包的 `NovelIndex/` 目录中建立新的 Git 仓库。旧工作区 Git 历史仍含替代前版本，不应把“当前文件已替代”理解为“旧历史的授权也已解决”。本工具不删除或改写原仓库历史，也不执行推送或部署。
+
+## 目录
+
+- `scrapers/`：公共存储/浏览器会话、起点 HTML 解析、晋江 HTTP 请求。
+- `config/platforms.json`：平台及榜单配置；前端对应 `js/config.js`。
+- `scripts/build_latest.py`：趋势、规则分析和静态 API 构建。
+- `scripts/build_release.py`：只包含公开资源的独立站点目录。
+- `tests/`：离线回归；`examples/`：合成示例输入。
+
+项目代码和合成示例适用 [MIT](LICENSE)，第三方组件按各自许可证提供。

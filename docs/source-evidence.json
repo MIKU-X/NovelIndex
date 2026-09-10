@@ -1,0 +1,40 @@
+{
+  "checked_on": "2026-09-08",
+  "upstream_files_redistributed": false,
+  "references": [
+    {
+      "repository": "dylan-byte-max/novel-tracker",
+      "commit": "511346c83f02e239313240abbcbf318b7b6d82d4",
+      "github_detected_license": null,
+      "files": {
+        "README.md": {
+          "sha256": "0d37a59ae4804839ff641fa592fe5cc07840e5a808f3043d81293c2e7a0aac56",
+          "url": "https://github.com/dylan-byte-max/novel-tracker/blob/511346c83f02e239313240abbcbf318b7b6d82d4/README.md"
+        },
+        "package.json": {
+          "sha256": "82c431211b45b662f3f6d8308451b12d882fa6565dfeafb3f941b64eaa2b2028",
+          "url": "https://github.com/dylan-byte-max/novel-tracker/blob/511346c83f02e239313240abbcbf318b7b6d82d4/package.json"
+        },
+        "scrapers/qidian.js": {
+          "sha256": "c4806b8d87692f795172c83281d11c8d4a2fc3987992647bee93d0f2d1ad9863",
+          "url": "https://github.com/dylan-byte-max/novel-tracker/blob/511346c83f02e239313240abbcbf318b7b6d82d4/scrapers/qidian.js"
+        }
+      }
+    },
+    {
+      "repository": "lien-Gu/JJClawler-full",
+      "commit": "9baccf912e60d133479780e9e5e42e7ebf41987e",
+      "github_detected_license": null,
+      "files": {
+        "README.md": {
+          "sha256": "f1cf186fe87818da26ac8de3798c9a7af46a3b19d03aab04d9b0498ca4dc14d9",
+          "url": "https://github.com/lien-Gu/JJClawler-full/blob/9baccf912e60d133479780e9e5e42e7ebf41987e/README.md"
+        },
+        "backend/app/crawl/http_client.py": {
+          "sha256": "59ab36cf672af67e2d3c285b164c5685e1fe5f4bdcb736b225de9f72ba3529a0",
+          "url": "https://github.com/lien-Gu/JJClawler-full/blob/9baccf912e60d133479780e9e5e42e7ebf41987e/backend/app/crawl/http_client.py"
+        }
+      }
+    }
+  ]
+}

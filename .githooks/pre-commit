@@ -1,0 +1,13 @@
+#!/bin/sh
+# Git invokes this from the worktree root. Override only with an executable path.
+if [ -n "$NOVELINDEX_PYTHON" ]; then
+    exec "$NOVELINDEX_PYTHON" scripts/check_publication.py --staged
+elif [ -x .venv/Scripts/python.exe ]; then
+    exec .venv/Scripts/python.exe scripts/check_publication.py --staged
+elif [ -x .venv/bin/python ]; then
+    exec .venv/bin/python scripts/check_publication.py --staged
+elif command -v python3 >/dev/null 2>&1; then
+    exec python3 scripts/check_publication.py --staged
+else
+    exec python scripts/check_publication.py --staged
+fi

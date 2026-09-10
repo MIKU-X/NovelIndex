@@ -1,0 +1,5 @@
+# Git Bash hooks must retain an LF shebang, even with core.autocrlf on Windows.
+.githooks/* text eol=lf
+# Preserve GBK encoding while checking out Windows batch files with CRLF.
+*.bat text eol=crlf
+*.ps1 text eol=crlf

@@ -1,0 +1,76 @@
+{
+  "_comment": "唯一平台/榜单配置源。爬虫、构建引擎(build_latest.py)、前端(js/config.js)共用。slug 是文件名前缀，{platform}_{rank_id} 复合值。",
+  "platforms": {
+    "fanqie": {
+      "name": "番茄小说",
+      "color": "#ff6b35",
+      "ranks": {
+        "male_new":    { "name": "男频新书榜", "gender": "男频", "entry_cat": "1141", "gender_code": 1, "type_code": 1 },
+        "male_read":   { "name": "男频阅读榜", "gender": "男频", "entry_cat": "1141", "gender_code": 1, "type_code": 2 },
+        "female_new":  { "name": "女频新书榜", "gender": "女频", "entry_cat": "1139", "gender_code": 0, "type_code": 1 },
+        "female_read": { "name": "女频阅读榜", "gender": "女频", "entry_cat": "1139", "gender_code": 0, "type_code": 2 }
+      }
+    },
+    "qidian": {
+      "name": "起点中文网",
+      "color": "#c83c23",
+      "chan_ids": {
+        "玄幻": "21", "奇幻": "1", "武侠": "2", "仙侠": "22",
+        "都市": "4", "现实": "15", "军事": "6", "历史": "5",
+        "游戏": "7", "体育": "8", "科幻": "9", "诸天无限": "20109",
+        "悬疑灵异": "10", "轻小说": "12"
+      },
+      "ranks": {
+        "hotsales": { "name": "每日畅销榜", "gender": "综合", "url": "https://www.qidian.com/rank/hotsales/" },
+        "signnewbook": { "name": "签约新书榜", "gender": "综合", "url": "https://www.qidian.com/rank/signnewbook/" },
+        "newsign": { "name": "新人签约新书榜", "gender": "综合", "url": "https://www.qidian.com/rank/newsign/" },
+        "sanjiang": { "name": "三江榜", "gender": "综合", "url": "https://www.qidian.com/sanjiang/", "no_category": true }
+      }
+    },
+    "jjwxc": {
+      "name": "晋江文学城",
+      "color": "#e6488a",
+      "channels": {
+        "index": "首页", "yq": "言情", "noyq": "纯爱", "ys": "衍生",
+        "nocp_plus": "无CP+", "bh": "百合"
+      },
+      "subcategories": {
+        "yq": [
+          {"channel":"gywx","name":"古言"}, {"channel":"dsyq","name":"现言"},
+          {"channel":"qqyq","name":"幻言"}, {"channel":"gdcy","name":"古穿"},
+          {"channel":"xhqh","name":"奇幻"}, {"channel":"xywy","name":"未来"},
+          {"channel":"trys","name":"衍生言情"}, {"channel":"trmd","name":"二次元"}
+        ],
+        "noyq": [
+          {"channel":"xddm","name":"都市"}, {"channel":"blhx","name":"现代幻想"},
+          {"channel":"gddm","name":"古代"}, {"channel":"wlhxca","name":"未来幻想"},
+          {"channel":"trdm","name":"衍生纯爱"}
+        ],
+        "nocp_plus": [
+          {"channel":"nocp","name":"无CP"}, {"channel":"ysnocp","name":"衍无"},
+          {"channel":"nocp_male","name":"男主"}, {"channel":"nocp_female","name":"女主"},
+          {"channel":"dy","name":"多元"}
+        ],
+        "ys": [
+          {"channel":"ysnocp","name":"无CP(衍生)"}, {"channel":"trdm","name":"纯爱(衍生)"},
+          {"channel":"trys","name":"言情(衍生)"}, {"channel":"trmd","name":"二次元(衍生)"}
+        ]
+      },
+      "ranks": {
+        "month": { "name": "积分月榜", "gender": "综合", "url": "https://www.jjwxc.net/topten.php?orderstr=5&t=2" }
+      }
+    },
+    "zongheng": {
+      "name": "纵横中文网",
+      "color": "#1e90ff",
+      "_status": "pending_investigation",
+      "ranks": {}
+    },
+    "qimao": {
+      "name": "七猫小说",
+      "color": "#9b59b6",
+      "_status": "pending_investigation",
+      "ranks": {}
+    }
+  }
+}

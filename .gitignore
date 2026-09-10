@@ -1,0 +1,85 @@
+**/.DS_Store
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg-info/
+dist/
+build/
+*.egg
+.ruff_cache/
+.runtime/
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Environment variables (N69: block variants; keep .env.example trackable)
+.env
+.env.*
+!.env.example
+
+# IDE
+.idea/
+.vscode/
+.claude/
+*.swp
+*.swo
+*~
+.backup/
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# 生成数据（爬虫产出，不入库）
+data/
+api/
+task_state_*.json
+
+# 日志文件
+logs/
+_*.log
+logs_*.txt
+
+# 每日分析产物（analyze_today.py / analyze_deep.py / 每日解读输出，等同日志）
+分析_*.txt
+分析_*.md
+
+# 第三方参考项目（不入库，严禁 git add -f 强制提交）：
+# 晋江爬虫/ 整包为他人代码，内含真实域名 nginx 配置（backend/nginx/*.conf）、
+# SQLite 数据库（backend/data/*.db）、.rar 压缩包及他人项目数据，仅作技术参考，
+# 若误入库将泄露第三方隐私并引入许可证/供应链风险。
+晋江爬虫/
+
+# 第三方参考：Scrapling 源码副本（爬虫优化参考，BSD-3 开源，整包不入库）与实验产物
+Scrapling-main/
+probe_out/
+
+# Credentials, browser sessions, diagnostic captures and local backups
+*.pem
+*.key
+*.p12
+*.pfx
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.har
+*.bak
+*.backup
+cookies.json
+cookie.json
+storage_state.json
+credentials.json
+auth.json
+.netrc
+.npmrc
+.pypirc
+.codex/
+.agents/

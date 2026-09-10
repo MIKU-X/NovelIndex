@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  offline-checks:
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 10
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        python: ['3.10', '3.12']
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Public source, staged files and reachable history (no secrets required)
+        run: |
+          python scripts/check_publication.py
+          python scripts/check_publication.py --staged --history
+      - name: Snapshot, preview and scraper regressions
+        run: python -m unittest discover -s tests -v
+      - name: AI failover with a fake provider
+        run: python smoke_ai_client.py
+      - name: Frontend and backend configuration agreement
+        run: python scripts/check_config_sync.py
+      - name: Frontend quality notices and exports (Node.js 18+)
+        run: node --test tests/frontend_quality.test.cjs
+
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7
+        with:
+          python-version: '3.12'
+      - run: python -m pip install "ruff==0.15.20"
+      - run: python -m ruff check .

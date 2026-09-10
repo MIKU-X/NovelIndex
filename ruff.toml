@@ -1,0 +1,41 @@
+# ruff 配置：小说指数 (NovelIndex) 项目的轻量 lint 门禁
+# 目标：给无测试的纯脚本+静态前端项目加一道低成本质量门，捕获明显错误，
+#       但不过度干预既有代码风格（项目无 linter 历史，强制重排会制造大量噪音）。
+
+target-version = "py310"      # 代码用 dict | None 等 3.10+ 语法
+line-length = 120             # 与 build_latest.py 既有长行风格匹配（原 120 左右）
+extend-exclude = [
+    "scripts/archive",        # 归档的一次性迁移脚本，不 lint
+    "data",                   # 生成数据
+    "api",                    # 生成 API
+    ".venv",
+    "晋江爬虫",               # 参考项目（JJClawler 等），非本项目代码，不 lint
+    "Scrapling-main",         # 第三方参考源码副本（Scrapling 整包），非本项目代码
+    "probe_out",              # 探测实验产物（HTML/响应 dump），生成物不 lint
+]
+
+[lint]
+# 只启用核心 + 常用安全规则集，避免对既有代码大量误报：
+#   E/F = pycodestyle 错误 + pyflakes（未用变量、未定义名等真 bug）
+#   W   = pycodestyle 警告
+#   I   = import 顺序（可自动修复，但不强制）
+#   UP  = pyupgrade 提示（不自动改，仅提示现代化）
+select = ["E", "F", "W", "I", "UP"]
+ignore = [
+    "E501",   # 行长：已用 line-length 控制，不单独报 E501（既有长行多）
+    "E402",   # 模块级 import 位置：项目多处 sys.path 调整在 import 前，是既有模式
+    "UP007",  # Optional[X] vs X | None：3.10+ 已用 | None，但旧写法不强制改
+    "UP045",  # 同上
+]
+
+[lint.per-file-ignores]
+# 爬虫脚本常有用后再 import 的惰性导入（如 run_all.py 在函数内 import argparse）
+"scrape_fanqie_ranks.py" = ["E402"]
+"run_all.py" = ["E402"]
+"scripts/build_latest.py" = ["E402"]
+"probe_*.py" = ["E402"]      # 实验/探测脚本：stdout reconfigure 在 import 前（既有模式）
+"smoke_*.py" = ["E402"]      # 冒烟脚本：sys.path 注入在 import 前
+
+[format]
+# 不自动格式化（避免大 diff），仅 lint 报告
+quote-style = "double"

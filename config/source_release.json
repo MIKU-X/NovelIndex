@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "files": [
+    {"path": "README.md", "source": "docs/开源发布说明.md"},
+    "LICENSE", "THIRD_PARTY_NOTICES.md", "CONTRIBUTING.md", "SECURITY.md", ".gitignore", ".gitattributes", ".env.example",
+    ".githooks/pre-commit", ".githooks/pre-push",
+    "requirements.txt", "ruff.toml", "setup.bat", "run_all.py", "scrape_fanqie_ranks.py",
+    "smoke_ai_client.py", "smoke_qidian_patchright.py",
+    "index.html", "author.html", "trend.html",
+    "css/style.css", "css/author.css",
+    "js/app.js", "js/author.js", "js/config.js", "js/export.js", "js/nav.js", "js/trend.js", "js/utils.js",
+    "config/loader.py", "config/environment.py", "config/platforms.json", "config/source_release.json",
+    "scrapers/__init__.py", "scrapers/base.py", "scrapers/qidian.py", "scrapers/qidian_state.py",
+    "scrapers/qidian_html.py", "scrapers/jjwxc.py", "scrapers/json_http.py", "scrapers/network_errors.py",
+    "scripts/ai_client.py", "scripts/analyze_today.py", "scripts/analyze_deep.py",
+    "scripts/build_latest.py", "scripts/build_release.py", "scripts/build_source_release.py",
+    "scripts/check_config_sync.py", "scripts/cleanup_task_states.py", "scripts/regen_creation_suggestions.py",
+    "scripts/check_publication.py", "scripts/publication_safety.py", "scripts/secret_redaction.py",
+    "scripts/runtime_state.py", "scripts/snapshot_utils.py", "scripts/serve_preview.py", "scripts/scheduled_run.py",
+    "scripts/manage_tasks.ps1", "scripts/register_task.ps1", "scripts/run_scheduled.ps1", "scripts/test_scheduled_task.ps1",
+    "examples/demo_seed.json", "examples/README.md", "licenses/Scrapling-LICENSE.txt",
+    "docs/开源发布说明.md", "docs/来源核对.md", "docs/source-evidence.json", "docs/发布与定时任务.md", "docs/采集与数据质量.md",
+    "docs/GitHub公开前检查.md", "docs/PROJECT_MAP.md", "docs/前端检查.md", "docs/已知限制.md",
+    "tests/test_distribution.py", "tests/test_pipeline.py", "tests/test_release_safety.py",
+    "tests/test_source_replacements.py", "tests/test_source_package.py", "tests/frontend_quality.test.cjs",
+    "tests/test_publication_security.py", "tests/test_cleanup.py",
+    ".github/workflows/ci.yml", ".github/dependabot.yml"
+  ]
+}
